@@ -86,14 +86,6 @@ section.box-up-col {
     border: dashed 1px yellow;
 }
 
-fieldset {
-    padding: 15px 20px;
-}
-
-button {
-    margin: 5px 0px;
-}
-
 /* Other Styles */
 .box-up-col {
     display: flex;
