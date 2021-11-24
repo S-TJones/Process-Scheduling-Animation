@@ -6,7 +6,6 @@
 }
 
 body {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     font-size: 24px;
@@ -38,13 +37,46 @@ li:hover {
 
 /* Main Styles */
 main {
-    height: calc(100vh - 150px);
+    min-height: calc(100vh - 150px);
     background-color: #808080;
 }
 
 section.box-up-col {
     background-color: bisque;
     padding: 100px;
+}
+
+#queue {
+    min-height: 200px;
+    background-color: aquamarine;
+}
+
+.left {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 60%;
+    height: 100%;
+    border-right: solid 3px black;
+}
+
+.right {
+    width: 70%;
+}
+
+.process {
+    height: 50px;
+    min-width: 50px;
+    max-width: 100px;
+    background-color: red;
+    border: dashed 1px yellow;
+}
+
+fieldset {
+    padding: 15px 20px;
+}
+
+button {
+    margin: 5px 0px;
 }
 
 /* Other Styles */
