@@ -41,6 +41,21 @@ main {
     background-color: #808080;
 }
 
+h4 {
+    margin-bottom: 10px;
+}
+
+.algo-links {
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin: 10px 10px;
+    background-color: #dadada;
+    color: #fff;
+    border-radius: 20px;
+    width: 200px;
+}
+
 section.box-up-col {
     background-color: bisque;
     padding: 100px;
@@ -92,6 +107,12 @@ button {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+hr {
+    border: solid 2px #000;
+    width: 100%;
+    margin: 10px 0px;
 }
 
 /* Footer Styles */
