@@ -19,6 +19,7 @@ addProcesses = function(event) {
         var processObj = {id:name, time:parseInt(number)};
         console.log("Insert Process Index: " + (lst.length+1));
         lst.push(processObj) // Add Process to the List
+        selectionSort(lst.length);
 
         // Get current HTML
         var currentHTML = document.getElementById("processes").innerHTML;
@@ -99,12 +100,8 @@ function selectionSort(n){
 
 start = async function(){
     // setTimeout(function, milliseconds)
-    var i = 0;
-    var len = lst.length;
-    selectionSort(len);
-    console.log("Length: " + len);
 
-    do {
+    while (lst.length > 0){
         // timer = setTimeout(popProcess, 3000);
 
         var time = lst[0].time;
@@ -113,9 +110,8 @@ start = async function(){
         for(var x = 0; x < time; x++){
             await new Promise(done => setTimeout(() => done(), 1000));
         }
-
-        i++;
-    } while (i < len);
+        console.log("Length: " + lst.length);
+    }
 
     console.log("DONE");
 }
