@@ -141,6 +141,25 @@ section.box-up-col {
     /* box-shadow: rgb(85, 58, 206, 0.4) -5px 5px, rgb(85, 58, 206, 0.377) -10px 10px, rgb(85, 58, 206, 0.2) -15px 15px, rgb(85, 58, 206, 0.1) -20px 20px, rgb(85, 58, 206, 0.05) -25px 25px; */
 }
 
+div .process{
+    height: 50px;
+    min-width: 50px;
+    max-width: 100px;
+    margin: 10px 5px;
+    position: relative;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: 1s;
+  }
+  
+  @keyframes example {
+    0%   {
+         left:0px; top:0px;}
+         25%  {background-color:yellow; left:50px; top:0px;}
+  100% {background-color:rgb(255, 255, 255); left:0px; top:0px;}
+}
+  
+
 
 
 
@@ -252,6 +271,10 @@ hr {
     margin: 10px 0px;
 }
 
+summary{
+    font-size: small;
+}
+
 /* Footer Styles */
 footer {
     height: 50px;
@@ -264,24 +287,3 @@ footer {
     font-size: 15px;
 }
 
-
-
-
-div .process{
-    height: 50px;
-    min-width: 50px;
-    max-width: 100px;
-    margin: 10px 5px;
-    position: relative;
-    animation-name: example;
-    animation-duration: 4s;
-    animation-iteration-count: 1s;
-  }
-  
-  @keyframes example {
-    0%   {
-         left:0px; top:0px;}
-         25%  {background-color:yellow; left:50px; top:0px;}
-  100% {background-color:rgb(255, 255, 255); left:0px; top:0px;}
-}
-  
