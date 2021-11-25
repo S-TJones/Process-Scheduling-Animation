@@ -1,5 +1,5 @@
 
-const cars = ["Saab", "Volvo", "BMW"];
+// Global List for Processes
 var lst = [];
 
 addProcesses = function(event) {
@@ -64,10 +64,44 @@ popProcess = function(index=-1, execute=false) {
     return removed;
 }
 
+// Javascript program for implementation of selection sort
+function swap(xp, yp)
+{
+    var temp = lst[xp];
+    lst[xp] = lst[yp];
+    lst[yp] = temp;
+}
+ 
+function selectionSort(n){
+    var i, j, min_idx;
+ 
+    // One by one move boundary of unsorted subarray
+    for (i = 0; i < n-1; i++)
+    {
+        // Find the minimum element in unsorted array
+        min_idx = i;
+        for (j = i + 1; j < n; j++){
+
+            var x, y;
+            x = lst[j].time;
+            y = lst[min_idx].time;
+
+            // console.log("Compare: " + x + " vs "+ y);
+            if (x < y){
+                min_idx = j;
+                // console.log("Smallest= " + min_idx);
+            }
+        }
+        // Swap the found minimum element with the first element
+        swap(min_idx, i);
+    }
+}
+
 start = async function(){
     // setTimeout(function, milliseconds)
     var i = 0;
     var len = lst.length;
+    selectionSort(len);
     console.log("Length: " + len);
 
     do {
