@@ -272,7 +272,11 @@ hr {
 }
 
 summary{
-    font-size: small;
+    font-size: large;
+}
+
+p{
+    font-size: large;
 }
 
 /* Footer Styles */
