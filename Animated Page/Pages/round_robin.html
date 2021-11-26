@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team A K's</title>
+
+    <link rel="stylesheet" href="../Styles/style.css">
+    <script src="../Scripts/rr.js" type="text/javascript"></script>
+</head>
+<body>
+    <header class="box-up-row">
+        <img src="" alt="">
+        <nav>
+            <ul class="box-up-row">
+                <li><a href="../index.html">Home</a></li>
+                <li>Algorithms</li>
+                <li>Register</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="box-up-col">
+            <p id="content">Content goes here</p>
+            <div>
+                <form>
+                    <fieldset class="box-up-col">
+                        <label for="name">Enter Process Name</label>
+                        <input type="text" name="name" id="name">
+                        <label for="number">Enter Process Time</label>
+                        <input type="text" name="number" id="number">
+                        <br>
+                        <button id="input" type="button">Enter Process</button>
+                    </fieldset>
+                    <fieldset class="box-up-row">
+                        <button id="reset" type="button">Reset Queue</button>
+                        <button id="pop" type="button">Pop Process</button>
+                        <button id="start" type="button">Deploy Processes</button>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+        <section id="queue" class="box-up-row">
+            <div id="processes" class="left">
+            </div>
+            <div id="executed" class="right"></div>
+        </section>
+    </main>
+    <footer class="box-up-col">
+        <p>Team A K's &copy; 2021</p>
+    </footer>
+</body>
+</html>
