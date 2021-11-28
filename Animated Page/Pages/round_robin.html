@@ -27,9 +27,12 @@
                 <form>
                     <fieldset class="box-up-col">
                         <label for="name">Enter Process Name</label>
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" id="name" autocomplete="off">
                         <label for="number">Enter Process Time</label>
-                        <input type="text" name="number" id="number">
+                        <input type="text" name="number" id="number" autocomplete="off">
+                        <label for="timer">Enter Process Set Time (Round Robin Time)</label>
+                        <input type="text" name="timer" id="timer" autocomplete="off">
+                        <p>Default is: 2 ms</p>
                         <br>
                         <button id="input" type="button">Enter Process</button>
                     </fieldset>
