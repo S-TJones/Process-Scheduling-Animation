@@ -1,6 +1,7 @@
 
 // Global List for Processes
 var lst = [];
+var fin = [];
 
 addProcesses = function(event) {
     event.preventDefault();
@@ -53,20 +54,26 @@ popProcess = function(index=-1, execute=false) {
     
     // Check if the Process should be executed
     if (execute) {
-        document.getElementById("executed").innerHTML = '<div class="process">' + removed.id + "-" + removed.time + 'ms</div>';
+        document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div class="process green">' + removed.id + "-" + removed.time + 'ms</div></div>';
     }
 
     return removed;
 }
 
-function updateProcessSection() {
+function updateProcessSection(the_list=lst, middle=true) {
     // Get the current process objects
     var processes = '';
-    for (var i = 0; i < lst.length; i++) {
-        let obj = lst[i];
+    for (var i = 0; i < the_list.length; i++) {
+        let obj = the_list[i];
         let name = obj.id;
         let number = obj.time;
-        processes += '<div class="process">' + name + "-" + number + 'ms</div>';
+
+        if (middle) {
+            processes += '<div class="process box-up-col">' + name + "-" + number + 'ms</div>';
+        } else {
+            processes += '<div class="process red">' + name + '</div>';
+        }
+        
     }
 
     return processes;
@@ -113,7 +120,12 @@ start = async function(){
         var remainingTime = process_obj.time - 1;
 
         // Do a complete second
-        await new Promise(done => setTimeout(() => done(), 1000));
+        var speed = document.getElementById("slow_fast").checked;
+        if(speed){
+            await new Promise(done => setTimeout(() => done(), 1000));
+        } else {
+            await new Promise(done => setTimeout(() => done(), 3000));
+        }
 
         // Update the Process' time
         console.log("Updating: " + process_obj.id + " with " + remainingTime);
@@ -125,11 +137,16 @@ start = async function(){
 
             // Resort the list of Processes
             selectionSort(lst.length);
+        } else {
+            fin.push(process_obj);
+            var result = updateProcessSection(fin, false);
+            document.getElementById("finished").innerHTML = result;
         }
 
         updateProcessSection();
     }
 
+    document.getElementById("executed").innerHTML = "";
     console.log("DONE");
 }
 
@@ -146,7 +163,10 @@ window.onload = function() {
     // Reset Queue
     resetButton.addEventListener("click", function(){
         lst = [];
+        fin = [];
         document.getElementById("processes").innerHTML = "";
+        document.getElementById("executed").innerHTML = "";
+        document.getElementById("finished").innerHTML = "";
     });
     // Check for Input
     inputButton.addEventListener("click", addProcesses);

@@ -22,7 +22,7 @@
     </header>
     <main>
         <section class="box-up-col">
-            <p id="content">Content goes here</p>
+            <p id="content">Shortest Time Remaining</p>
             <div>
                 <form>
                     <fieldset class="box-up-col">
@@ -30,21 +30,41 @@
                         <input type="text" name="name" id="name" autocomplete="off">
                         <label for="number">Enter Process Time</label>
                         <input type="text" name="number" id="number" autocomplete="off">
+
+                        
+                        <div class="box-up-col">
+                            <p>Animation Speed</p>
+
+                            <div class="toggle box-up-row">
+                                <p class="pad-right">SLOW</p>
+                                <label class="switch">
+                                    <input id="slow_fast" type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                                <p class="pad-left">NORMAL</p>
+                            </div>
+                        </div>
+
                         <br>
-                        <button id="input" type="button">Enter Process</button>
+                        <button id="input" type="button" class="button"><span class="text">Enter Process</span></button>
                     </fieldset>
                     <fieldset class="box-up-row">
-                        <button id="reset" type="button">Reset Queue</button>
-                        <button id="pop" type="button">Pop Process</button>
-                        <button id="start" type="button">Deploy Processes</button>
+                        <button id="reset" type="button" class="button"><span class="text">Reset Queue</span></button>
+                        <button id="pop" type="button" class="button"><span class="text">Pop Process</span></button>
+                        <button id="start" type="button" class="button"><span class="text">Deploy Processes</span></button>
                     </fieldset>
                 </form>
             </div>
         </section>
-        <section id="queue" class="box-up-row">
-            <div id="processes" class="left">
-            </div>
-            <div id="executed" class="right"></div>
+        <section class="queue">
+            <div class="left"><p class="box-up-row">QUEUE</p></div>
+            <div class="middle"><p class="box-up-row">PROCESSOR</p></div>
+            <div class="right"><p class="box-up-row">EXECUTED</p></div>
+        </section>
+        <section class="queue">
+            <div id="processes" class="left long box-up-col"></div>
+            <div id="executed" class="middle long box-up-col"></div>
+            <div id="finished" class="right long box-up-col"></div>
         </section>
     </main>
     <footer class="box-up-col">
