@@ -99,7 +99,7 @@ start = async function(){
             
             // console.log("Less than or equal to Zero");
             console.log("Popping " + process_obj.id);
-            popProcess(0, false);
+            popProcess(0, true);
         }
         else {
             // Executes for designated wait time
@@ -113,7 +113,7 @@ start = async function(){
             lst.push(updated_obj);
             
             console.log("Popping " + process_obj.id);
-            popProcess(0, false);
+            popProcess(0, true);
         }
 
     }
