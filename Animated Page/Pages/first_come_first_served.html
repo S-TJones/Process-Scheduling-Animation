@@ -7,57 +7,68 @@
     <title>Team A K's</title>
 
     <link rel="stylesheet" href="../Styles/style.css">
-    <link rel="stylesheet" href="../Styles/fc_fs.css">
-    <script src="../Scripts/script.js" type="text/javascript"></script>
+    <script src="../Scripts/fcfs.js" type="text/javascript"></script>
 </head>
 <body>
     <header class="box-up-row">
-        <img src="../Images/logo.jpg" alt="logo.jpg">
+        <img src="../Images/ak.gif" alt="AK GIF">
         <nav>
             <ul class="box-up-row">
                 <li><a href="../index.html">Home</a></li>
-                <li>Algorithms</li>
-                <li>Register</li>
+                <li><a href="#">Algorithms</a></li>
+                <li><a href="#">Register</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section class="box-up-col">
+        <section class="top box-up-col">
             <p id="content">First Come First Served <i>(FCFS)</i></p>
-            <div>
-                <form>
+            <form>
+                <div class="box-up-col fifty">
                     <fieldset class="box-up-col">
-                    <br>
                         <label for="name">Enter Process Name</label>
-                        <input type="text" name="name" id="name">
-                        <br>
+                        <input type="text" name="name" id="name" autocomplete="off">
+                    </fieldset>
+                    <fieldset class="box-up-col">
                         <label for="number">Enter Process Time</label>
-                        <input type="text" name="number" id="number">
-                        <br>
-                        <button id="input" type="button" class="button"><span class="text">Enter Process</span></button>
+                        <input type="text" name="number" id="number" autocomplete="off">
                     </fieldset>
-                    <fieldset class="box-up-row">
-                        <button id="reset" type="button" class="button"><span class="text">Reset Queue</span></button>
-                        <button id="pop" type="button" class="button"><span class="text">Pop </span></button>
-                        <button id="start" type="button" class="button"><span class="text">Deploy Processes</span></button>
+                    <fieldset class="box-up-col">
+                        <label>Animation Speed</label>
+
+                        <div class="toggle box-up-row">
+                            <p class="pad-right">SLOW</p>
+                            <label class="switch">
+                                <input id="slow_fast" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                            <p class="pad-left">NORMAL</p>
+                        </div>
                     </fieldset>
-                </form>
-            </div>
+                    <button id="input" type="button" class="button"><span class="text">Enter Process</span></button>
+                </div>
+                <div class="left-border box-up-col">
+                    <div class="box-up-col fifty">
+                        <fieldset class="box-up-col">
+                            <button id="reset" type="button" class="button"><span class="text">Reset Queue</span></button>
+                            <button id="pop" type="button" class="button"><span class="text">Pop Process</span></button>
+                            <button id="start" type="button" class="button"><span class="text">Deploy Processes</span></button>
+                        </fieldset>
+                    </div>
+                </div>
+            </form>
         </section>
-        <section id="queue" class="box-up-row">
-            <div id="processes" class="left">
-                <!-- <div class="process">1</div>
-                <div class="process">2</div>
-                <div class="process">3</div>
-                <div class="process">4</div>
-                <div class="process">5</div>
-                <div class="process">6</div>
-                <div class="process">7</div>
-                <div class="process">8</div>
-                <div class="process">9</div>
-                <div class="process">10</div> -->
+        <section>
+            <div class="queue">
+                <div class="left"><p class="box-up-row">QUEUE</p></div>
+                <div class="middle"><p class="box-up-row">PROCESSOR</p></div>
+                <div class="right"><p class="box-up-row">EXECUTED</p></div>
             </div>
-            <div id="executed" class="right"></div>
+            <div class="queue">
+                <div id="processes" class="left long box-up-col"></div>
+                <div id="executed" class="middle long box-up-col"></div>
+                <div id="finished" class="right long box-up-col"></div>
+            </div>
         </section>
     </main>
     <footer class="box-up-col">
