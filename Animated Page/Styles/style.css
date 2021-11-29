@@ -198,15 +198,16 @@ fieldset {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-input {
-    margin: 10px 0px;
-    border-radius: 10px;
+label {
+    word-wrap: normal;
 }
 
 input {
+    margin: 5px 0px;
+    border-radius: 10px;
     font: inherit;
     padding: 0.2em 0.5em;
-  }
+}
 
 details{
     background-color: rgb(214, 214, 214);
