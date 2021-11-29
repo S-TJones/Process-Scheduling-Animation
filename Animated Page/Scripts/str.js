@@ -20,7 +20,6 @@ addProcesses = function(event) {
         var processObj = {id:name, time:parseInt(number)};
         console.log("Insert Process Index: " + (lst.length+1));
         lst.push(processObj) // Add Process to the List
-        selectionSort(lst.length);
 
         // Get current HTML
         var currentHTML = document.getElementById("processes").innerHTML;
@@ -116,8 +115,14 @@ start = async function(){
     
     //
     while (lst.length > 0){
+        // Resort the list of Processes
+        selectionSort(lst.length);
+
         var process_obj = lst[0];
-        var remainingTime = process_obj.time - 1;
+        var process_time = process_obj.time;
+        var remainingTime = process_time - 1;
+
+        popProcess(0, true); // Pop, then...
 
         // Do a complete second
         var speed = document.getElementById("slow_fast").checked;
@@ -127,23 +132,22 @@ start = async function(){
             await new Promise(done => setTimeout(() => done(), 3000));
         }
 
-        // Update the Process' time
-        console.log("Updating: " + process_obj.id + " with " + remainingTime);
-        var updated_obj = {id:(process_obj.id), time:remainingTime};
-        
-        popProcess(0, true); // Pop, then...
+        // 
         if (remainingTime > 0) {
-            lst.push(updated_obj); // ... Push updated Process.
+            // Update the Process' time
+            console.log("Updating: " + process_obj.id + " with " + remainingTime);
+            var updated_obj = {id:(process_obj.id), time:remainingTime};
 
-            // Resort the list of Processes
-            selectionSort(lst.length);
+            
+            lst.unshift(updated_obj);
+
         } else {
+            document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"></div>';
+
             fin.push(process_obj);
             var result = updateProcessSection(fin, false);
             document.getElementById("finished").innerHTML = result;
         }
-
-        updateProcessSection();
     }
 
     document.getElementById("executed").innerHTML = "";
