@@ -7,11 +7,11 @@
     <title>Team A K's</title>
 
     <link rel="stylesheet" href="../Styles/style.css">
-    <script src="../Scripts/sjn.js" type="text/javascript"></script>
+    <script src="../Scripts/sj_n.js" type="text/javascript"></script>
 </head>
 <body>
     <header class="box-up-row">
-        <img src="../logo.jpg" alt="logo.jpg">
+        <img src="../Images/logo.jpg" alt="AK GIF">
         <nav>
             <ul class="box-up-row">
                 <li><a href="../index.html">Home</a></li>
@@ -21,32 +21,54 @@
         </nav>
     </header>
     <main>
-        <section class="box-up-col">
+        <section class="top box-up-col">
             <p id="content">Shortest Job Next <i>(SJN)</i></p>
-            <div>
-                <form>
+            <form>
+                <div class="box-up-col fifty">
                     <fieldset class="box-up-col">
-                        <br>
                         <label for="name">Enter Process Name</label>
-                        <input type="text" name="name" id="name">
-                        <br>
+                        <input type="text" name="name" id="name" autocomplete="off">
+                    </fieldset>
+                    <fieldset class="box-up-col">
                         <label for="number">Enter Process Time</label>
-                        <input type="text" name="number" id="number">
-                        <br>
-                        <button class="button" id="input" type="button"><span>Enter Process</span></button>
+                        <input type="text" name="number" id="number" autocomplete="off">
                     </fieldset>
-                    <fieldset class="box-up-row">
-                        <button class="button" id="reset" type="button"><span>Reset Queue</span></button>
-                        <button class="button" id="pop" type="button"><span>Pop Process</span></button>
-                        <button class= "button" id="start" type="button"><span>Deploy Processes</span></button>
+                    <fieldset class="box-up-col">
+                        <label>Animation Speed</label>
+
+                        <div class="toggle box-up-row">
+                            <p class="pad-right">SLOW</p>
+                            <label class="switch">
+                                <input id="slow_fast" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                            <p class="pad-left">NORMAL</p>
+                        </div>
                     </fieldset>
-                </form>
-            </div>
+                    <button id="input" type="button" class="button"><span class="text">Enter Process</span></button>
+                </div>
+                <div class="left-border box-up-col fifty">
+                    <div class="box-up-col">
+                        <fieldset class="box-up-col">
+                            <button id="reset" type="button" class="button"><span class="text">Reset Queue</span></button>
+                            <button id="pop" type="button" class="button"><span class="text">Pop Process</span></button>
+                            <button id="start" type="button" class="button"><span class="text">Deploy Processes</span></button>
+                        </fieldset>
+                    </div>
+                </div>
+            </form>
         </section>
-        <section id="queue" class="box-up-row">
-            <div id="processes" class="left">
+        <section>
+            <div class="queue">
+                <div class="left"><p class="box-up-row">QUEUE</p></div>
+                <div class="middle"><p class="box-up-row">PROCESSOR</p></div>
+                <div class="right"><p class="box-up-row">EXECUTED</p></div>
             </div>
-            <div id="executed" class="right"></div>
+            <div class="queue">
+                <div id="processes" class="left long"></div>
+                <div id="executed" class="middle long"></div>
+                <div id="finished" class="right long"></div>
+            </div>
         </section>
     </main>
     <footer class="box-up-col">

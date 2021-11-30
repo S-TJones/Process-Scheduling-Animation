@@ -46,7 +46,7 @@ popProcess = function(index=-1, execute=false) {
     lst.splice(index, 1);
     
     // Get the current process objects
-    var processes = updateProcessSection();
+    var processes = updateQueues();
 
     // Add the processes
     document.getElementById("processes").innerHTML = processes;
@@ -59,15 +59,21 @@ popProcess = function(index=-1, execute=false) {
     return removed;
 }
 
-function updateProcessSection(the_list=lst, middle=true) {
+/*
+    Will create HTML Code from the list of objects provided.
+*/
+function updateQueues(the_list=lst, left=true) {
     // Get the current process objects
     var processes = '';
     for (var i = 0; i < the_list.length; i++) {
+        // Get object details
         let obj = the_list[i];
         let name = obj.id;
         let number = obj.time;
 
-        if (middle) {
+        // If Left (True), Processes should be normal
+        // If Right (False), Processes should be Red
+        if (left) {
             processes += '<div class="process box-up-col">' + name + "-" + number + 'ms</div>';
         } else {
             processes += '<div class="process red">' + name + '</div>';
@@ -76,6 +82,28 @@ function updateProcessSection(the_list=lst, middle=true) {
     }
 
     return processes;
+}
+
+/*
+    Moves a Process Box with Animation
+*/
+function myMove() {
+    var id = null;
+    var elem = document.getElementById("moving-box");
+    var pos = 0;
+
+    clearInterval(id);
+    id = setInterval(frame, 1);
+
+    function frame() {
+        if (pos == 300) {
+            clearInterval(id);
+        } else {
+            pos++; 
+            // elem.style.top = pos + 'px'; 
+            elem.style.left = pos + 'px'; 
+        }
+    }
 }
 
 start = async function(){
@@ -99,7 +127,23 @@ start = async function(){
             }
             console.log("WAIT "+process_time + " "+ index+"="+(process_time-index));
 
-            document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div class="process green">' + process_obj.id + "-" + (process_time-index) + 'ms</div></div>';
+            if((process_time-index) === 0){
+                console.log("ZERO");
+                document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div id="moving-box" class="process green">' + process_obj.id + "-" + (process_time) + 'ms</div>';
+                await new Promise(done => setTimeout(() => done(), 1000));
+                document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div id="moving-box" class="process blue">' + process_obj.id + '</div>';
+                myMove();
+            }
+            else if((process_time-index) === 1){
+                console.log("ONE");
+                document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div id="moving-box" class="process green">' + process_obj.id + "-" + (process_time-index) + 'ms</div>';
+                await new Promise(done => setTimeout(() => done(), 1000));
+                document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div id="moving-box" class="process">' + process_obj.id + '</div>';
+                // myMove();
+            } else {
+                console.log("OTHER");
+                document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div class="process green">' + process_obj.id + "-" + (process_time-index) + 'ms</div></div>';
+            }
         }
 
         fin.push(process_obj);

@@ -122,6 +122,9 @@ section {
 .left {
     grid-area: left;
     border-right: solid 3px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .middle {
@@ -131,6 +134,14 @@ section {
 
 .right {
     grid-area: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#executed {
+    display: flex;
+    justify-content: center;
 }
 
 .long {
@@ -139,10 +150,12 @@ section {
 }
 
 .process {
-    height: 50px;
+    position: relative;
+    max-height: 80px;
     min-width: 50px;
-    max-width: 100px;
+    max-width: 200px;
     margin: 10px 5px;
+    padding: 10px;
     
     color: #000000;
     text-align: center;
@@ -150,26 +163,29 @@ section {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: rgb(255, 255, 255);
     border: solid 1px black;
+    /* border-radius: 50%; */
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     /* box-shadow: rgb(85, 58, 206, 0.4) -5px 5px, rgb(85, 58, 206, 0.377) -10px 10px, rgb(85, 58, 206, 0.2) -15px 15px, rgb(85, 58, 206, 0.1) -20px 20px, rgb(85, 58, 206, 0.05) -25px 25px; */
-}
-
-div .process{
-    height: 50px;
-    min-width: 50px;
-    max-width: 100px;
-    margin: 10px 5px;
-    position: relative;
 }
 
 .red {
     background-color: red;
 }
+.move-green {
+    background-color: green;
+    color: #fff;
+}
 .green {
     background-color: green;
+    color: #fff;
+    border-radius: 10px;
+}
+.green p {
+    font-size: 26px;
 }
 .blue {
     background-color: blue;
+    color: #fff;
 }
 
 form {
@@ -177,7 +193,7 @@ form {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    width: 100%;
+    min-width: 100%;
     padding: 40px 0px;
     margin-top: 20px;
     background-color: #170055;
@@ -217,6 +233,7 @@ details{
     height: 300px;
     width: 300px;
     background-color: rgb(250, 250, 65);
+    border-radius: 20px;
 }
 
 
