@@ -93,7 +93,9 @@ addProcesses = function() {
     }
 }
 
-/**/
+/*
+    Removes a process from the index position given and returns it
+*/
 popProcess = function(index=-1, display=true) {
     // Check for No-Parameters
     if (index === -1) {
@@ -114,8 +116,9 @@ popProcess = function(index=-1, display=true) {
     return removed;
 }
 
-/* */
+/* 
 // Javascript program for implementation of selection sort
+*/
 function swap(xp, yp)
 {
     var temp = lst[xp];
@@ -183,10 +186,14 @@ start = async function(){
                 await new Promise(done => setTimeout(() => done(), 3000));
             }
 
+            // Calculate difference
             difference = (process_time-index);
 
+            // Check if there are any more elements in the list
             if (lst.length > 0) {
+                // If so, check to see if current Process is the smallest compared to the one at the top of the sorted list
                 if(difference < lst[0].time){
+                    // If countdown == zero, move box and updated Executed list
                     if(difference === 0){
                         document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div id="moving-box" class="process red"><p>' + process_name + "</p><p>" + difference + 'ms</p></div>';
             
@@ -198,6 +205,7 @@ start = async function(){
                         document.getElementById("finished").innerHTML = result;
                         document.getElementById("executed").innerHTML = "";
                     }
+                    // Else, update the value within the box
                     else {
                         document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div id="moving-box" class="process green"><p>' + process_name + "</p><p>" + difference + 'ms</p></div>';
                     }
@@ -216,6 +224,7 @@ start = async function(){
                     break;
                 }
             } else {
+                // If countdown == zero, move box and updated Executed list
                 if(difference === 0){
                     document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div id="moving-box" class="process red"><p>' + process_name + "</p><p>" + difference + 'ms</p></div>';
         
@@ -227,6 +236,7 @@ start = async function(){
                     document.getElementById("finished").innerHTML = result;
                     document.getElementById("executed").innerHTML = "";
                 }
+                // Else, update the value within the box
                 else {
                     document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div id="moving-box" class="process green"><p>' + process_name + "</p><p>" + difference + 'ms</p></div>';
                 }
@@ -235,6 +245,7 @@ start = async function(){
         }
     }
 
+    // Clear the Executed column
     document.getElementById("executed").innerHTML = "";
     console.log("DONE");
 }
@@ -307,7 +318,7 @@ window.onload = function() {
     var popButton = document.getElementById("pop");
     var startButton = document.getElementById("start");
 
-    // Reset Queue
+    // Reset Queue and other elements
     resetButton.addEventListener("click", function(){
         lst = [];
         fin = [];

@@ -92,7 +92,9 @@ addProcesses = function() {
     }
 }
 
-/**/
+/*
+    Removes a process from the index position given and returns it
+*/
 popProcess = function(index=-1, display=true) {
     // Check for No-Parameters
     if (index === -1) {
@@ -138,11 +140,14 @@ start = async function(){
         var process_name = process_obj.id;
         var remainingTime = process_time - waitTime;
 
+        // Does the animation
         myMove(1, true);
         await new Promise(done => setTimeout(() => done(), 2000));
         document.getElementById("processes").innerHTML = getListOfProcesses();
         document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div class="process green"><p>' + process_name + "</p><p>" + process_time + 'ms</p></div>';
 
+        // If remaining time is less than or equal to zero
+        // Do the amount of seconds that was originally in the process
         if (remainingTime <= 0) {
             for (let index = 1; index < process_time+1; index++) {
                 // Do a complete second
@@ -153,6 +158,7 @@ start = async function(){
                     await new Promise(done => setTimeout(() => done(), 3000));
                 }
     
+                // If countdown == zero, move box and updated Executed list
                 if((process_time-index) === 0){
                     document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div id="moving-box" class="process red"><p>' + process_name + "</p><p>" + (process_time-index) + 'ms</p></div>';
     
@@ -164,12 +170,15 @@ start = async function(){
                     document.getElementById("finished").innerHTML = result;
                     document.getElementById("executed").innerHTML = "";
                 }
+                // Else, update the value within the box
                 else {
                     document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div class="process green"><p>' + process_name + "</p><p>" + (process_time-index) + 'ms</p></div>';
                 }
                 
             }
-        } else {
+        } 
+        // Just do the Round Robin seconds entered
+        else {
             for (let index = 1; index < waitTime+1; index++) {
                 // Do a complete second
                 var speed = document.getElementById("slow_fast").checked;
@@ -179,6 +188,7 @@ start = async function(){
                     await new Promise(done => setTimeout(() => done(), 3000));
                 }
     
+                // If countdown == zero, move box and updated Executed list
                 if((process_time-index) === 0){
                     document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div id="moving-box" class="process red"><p>' + process_name + "</p><p>" + (process_time-index) + 'ms</p></div>';
     
@@ -190,24 +200,28 @@ start = async function(){
                     document.getElementById("finished").innerHTML = result;
                     document.getElementById("executed").innerHTML = "";
                 }
+                // Else, update the value within the box
                 else {
                     document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div id="moving-box2" class="process green"><p>' + process_name + "</p><p>" + (process_time-index) + 'ms</p></div>';
                 }
                 
             }
 
+            // Do the other animation
             await new Promise(done => setTimeout(() => done(), 1000));
             myMoveBack(1, true);
             await new Promise(done => setTimeout(() => done(), 2000));
             document.getElementById("executed").innerHTML = "";
             document.getElementById("processes").innerHTML = getListOfProcesses();
 
+            // Update the process list with new time values
             console.log("Updating: " + process_obj.id + " with " + remainingTime);
             var updated_obj = {id:(process_obj.id), time:remainingTime};
             lst.push(updated_obj);
         }
     }
 
+    // Clear the Executed column
     document.getElementById("executed").innerHTML = "";
     console.log("DONE");
 }
@@ -280,7 +294,7 @@ window.onload = function() {
     var popButton = document.getElementById("pop");
     var startButton = document.getElementById("start");
 
-    // Reset Queue
+    // Reset Queue and other elements
     resetButton.addEventListener("click", function(){
         lst = [];
         fin = [];

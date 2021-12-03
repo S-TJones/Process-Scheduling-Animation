@@ -92,7 +92,9 @@ addProcesses = function() {
     }
 }
 
-/**/
+/*
+    Removes a process from the index position given and returns it
+*/
 popProcess = function(index=-1, display=true) {
     // Check for No-Parameters
     if (index === -1) {
@@ -128,6 +130,7 @@ start = async function(){
         var process_time = process_obj.time;
         var process_name = process_obj.id;
 
+        // Does the animation
         myMove(1, true);
         await new Promise(done => setTimeout(() => done(), 2000));
         document.getElementById("processes").innerHTML = getListOfProcesses();
@@ -142,6 +145,7 @@ start = async function(){
                 await new Promise(done => setTimeout(() => done(), 3000));
             }
 
+            // If countdown == zero, move box and updated Executed list
             if((process_time-index) === 0){
                 document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div id="moving-box" class="process red"><p>' + process_name + "</p><p>" + (process_time-index) + 'ms</p></div>';
 
@@ -153,6 +157,7 @@ start = async function(){
                 document.getElementById("finished").innerHTML = result;
                 document.getElementById("executed").innerHTML = "";
             }
+            // Else, update the value within the box
             else {
                 document.getElementById("executed").innerHTML = '<div class="execution-box box-up-row"><div class="process green"><p>' + process_name + "</p><p>" + (process_time-index) + 'ms</p></div>';
             }
@@ -160,6 +165,7 @@ start = async function(){
         }
     }
 
+    // Clear the Executed column
     document.getElementById("executed").innerHTML = "";
     console.log("DONE");
 }
@@ -206,7 +212,7 @@ window.onload = function() {
     var popButton = document.getElementById("pop");
     var startButton = document.getElementById("start");
 
-    // Reset Queue
+    // Reset Queue and other elements
     resetButton.addEventListener("click", function(){
         lst = [];
         fin = [];
